@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import HomeImage from '@/assets/HomeRight.png';
 import Image from 'next/image';
 import { useLayoutEffect, useRef } from "react";
