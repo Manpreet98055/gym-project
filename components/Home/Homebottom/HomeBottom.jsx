@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaFacebookF, FaInstagram, FaArrowUp } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 
 const HomeBottom = () => {
   const [showTop, setShowTop] = useState(false);
@@ -18,7 +17,7 @@ const HomeBottom = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // ✅ NEWSLETTER HANDLER
+  
   const handleNewsletter = () => {
     if (!email) {
       toast.error("Email is required");
@@ -50,10 +49,10 @@ const HomeBottom = () => {
     <footer className="bg-white text-black px-6 md:px-20 py-12 relative">
       <ToastContainer />
 
-      {/* TOP GRID */}
+   
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
 
-        {/* COLUMN 1 */}
+        
         <div>
           <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
             Gym
@@ -67,7 +66,7 @@ const HomeBottom = () => {
           </div>
         </div>
 
-        {/* COLUMN 2 */}
+      
         <div>
           <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
             Members
@@ -78,7 +77,7 @@ const HomeBottom = () => {
           </div>
         </div>
 
-        {/* COLUMN 3 */}
+     
         <div>
           <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
             Follow Us
@@ -109,7 +108,6 @@ const HomeBottom = () => {
           </div>
         </div>
 
-        {/* COLUMN 4 – NEWSLETTER */}
         <div>
           <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
             Newsletter
@@ -138,10 +136,10 @@ const HomeBottom = () => {
         </div>
       </div>
 
-      {/* DIVIDER */}
+    
       <div className="my-10 h-px bg-gray-200"></div>
 
-      {/* COPYRIGHT */}
+   
       <div className="text-sm text-gray-500 text-center tracking-wide">
         © {new Date().getFullYear()}{" "}
         <span className="font-semibold text-[#1A1363]">
@@ -149,7 +147,7 @@ const HomeBottom = () => {
         </span>. All rights reserved.
       </div>
 
-      {/* SCROLL TO TOP */}
+ 
       {showTop && (
         <button
           onClick={scrollToTop}
