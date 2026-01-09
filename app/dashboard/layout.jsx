@@ -8,13 +8,13 @@ import ConfirmModal from "@/components/ui/ConfirmModal";
 
 const menu = [
   { name: "Dashboard", path: "/dashboard" },
-  {name: "Admin" , path:"/dashboard/admin-profile"},
   { name: "Registrations", path: "/dashboard/registrations" },
   { name: "Members", path: "/dashboard/members" },
   { name: "Coaches", path: "/dashboard/coaches" },
   { name: "Plans", path: "/dashboard/plans" },
-  { name: "Payments", path: "/dashboard/payments" },
+  { name: "Inventory", path: "/dashboard/inventory" },
   { name: "Reports", path: "/dashboard/reports" },
+  { name: "Admin Profile", path: "/dashboard/admin-profile" },
 ];
 
 export default function DashboardLayout({ children }) {

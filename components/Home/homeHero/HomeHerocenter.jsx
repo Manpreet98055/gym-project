@@ -28,7 +28,6 @@ const HomeHerocenter = () => {
 
         <p
           className="font-semibold pt-6 md:pt-10 text-3xl md:text-5xl tracking-wider"
-          style={{ fontFamily: "Poppins, sans-serif" }}
         >
           What we offer:
         </p>

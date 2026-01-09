@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
   {
     label:"Home",
-    href:"dashboard"
+    href:"/dashboard"
   }
   ,
     {
@@ -9,20 +9,8 @@ export const NAV_ITEMS = [
         href: "/about",
     },
     {
-        label: "Why join Us?",
-        href: "/join",
-    },
-    {
         label: "Plan",
         href: "/plan",
-    },
-      {
-        label: "Coaches",
-        href: "/coaches",
-    },
-     {
-        label: "Visit our Gym",
-        href: "/visit",
     },
      {
         label: "Register",

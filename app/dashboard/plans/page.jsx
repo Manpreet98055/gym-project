@@ -66,7 +66,13 @@ export default function PlansPage() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-3xl font-bold text-[#1A1363]">Plans</h1>
 
-        <button className="bg-white px-5 py-2 rounded-full shadow font-semibold">
+        <button
+          onClick={() => {
+            setForm({ name: "", validity: "", amount: "" });
+            setEditId(null);
+          }}
+          className="bg-white px-5 py-2 rounded-full shadow font-semibold"
+        >
           + Add Plan
         </button>
       </div>
