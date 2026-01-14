@@ -10,7 +10,7 @@ const Navbar = () => {
   const router = useRouter();
   const [logged, setLogged] = useState(false);
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // 👈 NEW
+  const [scrolled, setScrolled] = useState(false); 
 
   useEffect(() => {
     const auth = localStorage.getItem("loggedIn");
@@ -92,7 +92,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* MOBILE HAMBURGER */}
+         
           <button
             onClick={() => setOpen(true)}
             className="md:hidden text-2xl text-[#1A1363]"
@@ -102,7 +102,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE OVERLAY */}
+  
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -110,7 +110,7 @@ const Navbar = () => {
         />
       )}
 
-      {/* MOBILE DRAWER */}
+    
       <div
         className={`
           fixed top-0 right-0 z-50
@@ -148,7 +148,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* SPACER */}
+     
       <div className="h-[80px]" />
     </>
   );

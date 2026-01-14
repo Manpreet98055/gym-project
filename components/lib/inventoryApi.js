@@ -1,5 +1,5 @@
 
-const BASE_URL = '/api/inventory'; // Placeholder API endpoint
+const BASE_URL = '/api/inventory'; 
 
 export const fetchInventory = async () => {
   // In a real application, you would make an API call here.
@@ -19,7 +19,7 @@ export const addInventoryItem = async (item) => {
   return new Promise(resolve => {
     setTimeout(() => {
       console.log('API: Adding item', item);
-      resolve({ ...item, id: Date.now() }); // Simulate adding with an ID
+      resolve({ ...item, id: Date.now() }); 
     }, 500);
   });
 };

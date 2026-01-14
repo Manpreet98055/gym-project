@@ -1,5 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import NavImage from "@/assets/Navimg.png";
+
 
 export default function CoachesPage() {
   const [coaches, setCoaches] = useState([]);
@@ -46,6 +49,31 @@ export default function CoachesPage() {
   return (
     <div className="space-y-6">
 
+ <div className=" md:p-4 
+                     flex items-center justify-between">
+     
+     
+       <div className="flex items-center gap-3">
+         <Image
+           src={NavImage}
+           alt="Gym Logo"
+           width={220}
+           height={40}
+           className="object-contain"
+         />
+        
+       </div>
+     
+       
+       <button
+         onClick={() => alert("Feedback form coming soon")}
+         className="text-[#1A1363]
+                    px-4 py-2 rounded-full text-sm font-semibold
+                    hover:bg-[#301fce] hover:text-red-50 transition"
+       >
+         Feedback
+       </button>
+     </div>
    
       <div className="flex flex-wrap justify-between gap-4">
         <h1 className="text-3xl font-bold text-[#1A1363]">

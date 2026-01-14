@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { COACHES } from "@/constants/coachesData.js";
 import NavImage from "@/assets/Navimg.png";
+import { COACHES } from "@/constants/coachesData.js";
 
 export default function DashboardPage() {
 

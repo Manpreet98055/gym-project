@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import NavImage from "@/assets/Navimg.png";
 
 export default function MembersPage() {
   const [members, setMembers] = useState([]);
@@ -42,7 +44,7 @@ export default function MembersPage() {
     setMembers(stored);
   }, []);
 
-  // SEARCH FILTER
+
   const filteredMembers = members.filter(m =>
     m.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -50,15 +52,40 @@ export default function MembersPage() {
   return (
     <div className="space-y-6">
 
-      {/* HEADER */}
+      <div className=" md:p-4 
+                     flex items-center justify-between">
+     
+     
+       <div className="flex items-center gap-3">
+         <Image
+           src={NavImage}
+           alt="Gym Logo"
+           width={220}
+           height={40}
+           className="object-contain"
+         />
+        
+       </div>
+     
+       
+       <button
+         onClick={() => alert("Feedback form coming soon")}
+         className="text-[#1A1363]
+                    px-4 py-2 rounded-full text-sm font-semibold
+                    hover:bg-[#301fce] hover:text-red-50 transition"
+       >
+         Feedback
+       </button>
+     </div>
+     
       <h1 className="text-3xl font-bold text-[#1A1363]">
         Active Members
       </h1>
 
-      {/* MEMBERS CARD */}
+    
       <div className="bg-[#7C7FA6] text-white rounded-2xl p-6 overflow-x-auto">
 
-        {/* TOP BAR */}
+      
         <div className="flex flex-wrap justify-between gap-4 mb-4">
           <div className="flex items-center gap-2 text-sm">
             Show
@@ -77,7 +104,7 @@ export default function MembersPage() {
           />
         </div>
 
-        {/* TABLE */}
+    
         <table className="w-full text-sm min-w-[700px]">
           <thead>
             <tr className="text-left opacity-80">
@@ -116,8 +143,6 @@ export default function MembersPage() {
             ))}
           </tbody>
         </table>
-
-        {/* PAGINATION */}
         <div className="flex justify-end gap-3 mt-4">
           <button className="px-4 py-1 bg-gray-300 text-black rounded-full text-sm">
             Previous

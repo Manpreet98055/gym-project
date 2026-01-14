@@ -8,16 +8,22 @@ export const NAV_ITEMS = [
         label: "About",
         href: "/about",
     },
-    {
-        label: "Plan",
-        href: "/plan",
-    },
+   { label: "Plan", href: "/dashboard/plans" },
      {
         label: "Register",
         href: "/signup",
     },
     
 ]
+
+// export const NAV_ITEMS = [
+//   { label: "Home", href: "/" },
+//   { label: "Plan", href: "/dashboard/plans" }, // ✅ CHANGE HERE
+//   { label: "Register", href: "/signup" },
+// ];
+
+
+
 
 export const COACHES = [
   {

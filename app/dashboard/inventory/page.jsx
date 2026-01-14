@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { fetchInventory, addInventoryItem, updateInventoryItem, deleteInventoryItem } from '@/components/lib/inventoryApi';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import ConfirmModal from '@/components/ui/ConfirmModal';
+import Image from "next/image";
+import NavImage from "@/assets/Navimg.png";
+
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
@@ -61,7 +64,7 @@ const InventoryPage = () => {
       const updatedItem = await updateInventoryItem({ ...editingItem, total: parseInt(editingItem.total) });
       setInventory(prev =>
         prev.map(item =>
-          item.id === updatedItem.id // Assuming items have a unique 'id' now
+          item.id === updatedItem.id 
             ? updatedItem
             : item
         )
@@ -88,9 +91,36 @@ const InventoryPage = () => {
 
   return (
     <div className="container mx-auto p-6 bg-white rounded-lg shadow-md">
+
+ <div className=" md:p-4 
+                     flex items-center justify-between">
+     
+     
+       <div className="flex items-center gap-3">
+         <Image
+           src={NavImage}
+           alt="Gym Logo"
+           width={220}
+           height={40}
+           className="object-contain"
+         />
+        
+       </div>
+     
+       
+       <button
+         onClick={() => alert("Feedback form coming soon")}
+         className="text-[#1A1363]
+                    px-4 py-2 rounded-full text-sm font-semibold
+                    hover:bg-[#301fce] hover:text-red-50 transition"
+       >
+         Feedback
+       </button>
+     </div>
+
       <h1 className="text-3xl font-bold text-[#1A1363] mb-6">Inventory Management</h1>
 
-      {/* Search and Add Button */}
+     
       <div className="flex justify-between items-center mb-6">
         <input
           type="text"
