@@ -29,14 +29,14 @@ export const COACHES = [
   {
     name: "Coach John",
     role: "Strength Coach",
-    image: "/coaches/john.jpg",
+    image: "/coaches/John.jpg",
     instagram: "https://instagram.com/",
     facebook: "https://facebook.com/",
   },
   {
     name: "Coach Martell",
     role: "Fitness Trainer",
-    image: "/coaches/martell.jpg",
+    image: "/coaches/Martell.jpg",
     instagram: "https://instagram.com/",
     facebook: "https://facebook.com/",
   },
