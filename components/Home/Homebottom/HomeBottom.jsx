@@ -47,7 +47,8 @@ const HomeBottom = () => {
   };
 
   const linkVariants = {
-    hover: { x: 5, color: "#1A1363", transition: { duration: 0.2 } }
+    hover: { x: 5, color: "#1A1363", transition: { duration: 0.2 } },
+    tap: { x: 3, color: "#1A1363", transition: { duration: 0.15 } }
   };
 
   const columnVariants = {
@@ -67,7 +68,7 @@ const HomeBottom = () => {
       color: "white",
       transition: { duration: 0.2 }
     },
-    tap: { scale: 0.9 }
+    tap: { scale: 0.95, rotate: 0, transition: { duration: 0.15 } }
   };
 
   const scrollButtonVariants = {
@@ -77,8 +78,8 @@ const HomeBottom = () => {
       y: 0,
       transition: { duration: 0.3 }
     },
-    hover: { scale: 1.15, backgroundColor: "#251D74" },
-    tap: { scale: 0.9 }
+    hover: { scale: 1.15, backgroundColor: "#251D74", transition: { duration: 0.2 } },
+    tap: { scale: 0.9, transition: { duration: 0.15 } }
   };
 
   return (
@@ -122,6 +123,7 @@ const HomeBottom = () => {
                 className="block hover:text-[#1A1363] transition cursor-pointer"
                 variants={linkVariants}
                 whileHover="hover"
+                whileTap="tap"
               >
                 {item}
               </motion.a>
@@ -148,6 +150,7 @@ const HomeBottom = () => {
                 className="block hover:text-[#1A1363] transition cursor-pointer"
                 variants={linkVariants}
                 whileHover="hover"
+                whileTap="tap"
               >
                 {item}
               </motion.a>

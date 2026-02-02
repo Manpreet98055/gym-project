@@ -37,6 +37,11 @@ const Coaches = () => {
       scale: 1.05,
       boxShadow: "0px 0px 30px rgba(255,255,255,0.3)",
       transition: { duration: 0.3 }
+    },
+    tap: {
+      scale: 1.02,
+      boxShadow: "0px 0px 20px rgba(255,255,255,0.2)",
+      transition: { duration: 0.2 }
     }
   };
 
@@ -51,7 +56,7 @@ const Coaches = () => {
       rotate: 5,
       transition: { duration: 0.2 }
     },
-    tap: { scale: 0.9 }
+    tap: { scale: 0.85, rotate: 0, transition: { duration: 0.15 } }
   };
 
   return (
@@ -90,11 +95,13 @@ const Coaches = () => {
               className="bg-[#BDB7FF] rounded-3xl shadow-2xl flex flex-col items-center relative p-6"
               variants={cardVariants}
               whileHover="hover"
+              whileTap="tap"
             >
               <motion.div
                 className="w-28 h-28 rounded-full border-4 border-white overflow-hidden absolute -top-14 bg-white"
                 variants={imageVariants}
                 whileHover="hover"
+                whileTap="tap"
               >
                 <Image
                   src={coach.image}

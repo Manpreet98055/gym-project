@@ -36,12 +36,12 @@ const Visitgym = () => {
       rotate: 5,
       transition: { duration: 0.2 }
     },
-    tap: { scale: 0.9 }
+    tap: { scale: 0.85, rotate: 0, transition: { duration: 0.15 } }
   };
 
   const linkVariants = {
-    hover: { scale: 1.05, color: "#FFD700" },
-    tap: { scale: 0.95 }
+    hover: { scale: 1.05, color: "#FFD700", transition: { duration: 0.2 } },
+    tap: { scale: 0.95, transition: { duration: 0.15 } }
   };
 
   return (

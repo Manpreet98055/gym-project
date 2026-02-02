@@ -61,7 +61,7 @@ const Register = () => {
 
   const buttonVariants = {
     hover: { scale: 1.05 },
-    tap: { scale: 0.95 }
+    tap: { scale: 0.95, transition: { duration: 0.1 } }
   };
 
   const imageVariants = {
@@ -71,7 +71,8 @@ const Register = () => {
       scale: 1,
       transition: { delay: index * 0.1, duration: 0.4 }
     }),
-    hover: { scale: 1.1 }
+    hover: { scale: 1.1, transition: { duration: 0.2 } },
+    tap: { scale: 0.95, transition: { duration: 0.1 } }
   };
 
   return (
@@ -185,6 +186,7 @@ const Register = () => {
                   custom={i}
                   variants={imageVariants}
                   whileHover="hover"
+                  whileTap="tap"
                   initial="hidden"
                   animate="visible"
                 >

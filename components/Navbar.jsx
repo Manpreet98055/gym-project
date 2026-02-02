@@ -52,12 +52,13 @@ const Navbar = () => {
       y: 0,
       transition: { delay: index * 0.1 }
     }),
-    hover: { scale: 1.05, color: "#1A1363" }
+    hover: { scale: 1.05, color: "#1A1363", transition: { duration: 0.2 } },
+    tap: { scale: 0.95, transition: { duration: 0.1 } }
   };
 
   const buttonVariants = {
-    hover: { scale: 1.1 },
-    tap: { scale: 0.95 }
+    hover: { scale: 1.1, transition: { duration: 0.2 } },
+    tap: { scale: 0.92, transition: { duration: 0.1 } }
   };
 
   const mobileMenuVariants = {
