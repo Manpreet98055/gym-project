@@ -1,4 +1,5 @@
 'use client'
+
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,13 +14,14 @@ export default function Signup() {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors }
   } = useForm();
 
   const router = useRouter();
   const containerRef = useRef(null);
 
-  // ✅ GSAP (safe, no stuck)
+  // ✅ GSAP Animation
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
@@ -43,12 +45,27 @@ export default function Signup() {
     return () => ctx.revert();
   }, []);
 
+
+  // ✅ FORM SUBMIT
   const onSubmit = (data) => {
+
+    // 🚫 Block specific username BEFORE saving
+    if (data.username === "Dhruv") {
+      setError("username", {
+        type: "manual",
+        message: "This username is not allowed."
+      });
+      return;
+    }
+
+    // ✅ Save only if valid
     localStorage.setItem("gymUser", JSON.stringify(data));
     toast.success("Account created 🎉 Redirecting to login…");
+
     setTimeout(() => router.push("/login"), 1500);
     reset();
   };
+
 
   return (
     <div
@@ -59,7 +76,7 @@ export default function Signup() {
 
       <div className="flex flex-col md:flex-row items-center overflow-hidden max-w-4xl w-full">
 
-     
+        {/* FORM SIDE */}
         <div className="signup-form w-full md:w-1/2 p-8 text-[#1A1363]">
 
           <h1 className="text-4xl font-bold mb-6 text-center md:text-left">
@@ -68,7 +85,7 @@ export default function Signup() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
-        
+            {/* USERNAME */}
             <div>
               <label className="font-medium block mb-1 text-2xl">
                 Username*
@@ -91,7 +108,7 @@ export default function Signup() {
               )}
             </div>
 
-       
+            {/* EMAIL */}
             <div>
               <label className="font-medium block mb-1 text-2xl">
                 Email*
@@ -114,7 +131,7 @@ export default function Signup() {
               )}
             </div>
 
-       
+            {/* PASSWORD */}
             <div>
               <label className="font-medium block mb-1 text-2xl">
                 Password*
@@ -142,13 +159,14 @@ export default function Signup() {
               )}
             </div>
 
-         
+            {/* BUTTON */}
             <button
               type="submit"
               className="w-full bg-[#1A1363] cursor-pointer text-white py-3 rounded-xl text-2xl font-extrabold hover:bg-[#251D74] transition"
             >
               Register
             </button>
+
           </form>
 
           <p
@@ -159,7 +177,7 @@ export default function Signup() {
           </p>
         </div>
 
-        
+        {/* IMAGE SIDE */}
         <div className="signup-image hidden md:flex w-1/2 justify-center items-center p-6">
           <Image
             src={HomeImage}

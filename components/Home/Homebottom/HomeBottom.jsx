@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaFacebookF, FaInstagram, FaArrowUp } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HomeBottom = () => {
   const [showTop, setShowTop] = useState(false);
@@ -45,120 +46,225 @@ const HomeBottom = () => {
     setEmail("");
   };
 
+  const linkVariants = {
+    hover: { x: 5, color: "#1A1363", transition: { duration: 0.2 } }
+  };
+
+  const columnVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: index * 0.1, duration: 0.5 }
+    })
+  };
+
+  const socialVariants = {
+    hover: {
+      scale: 1.15,
+      rotate: 10,
+      backgroundColor: "#1A1363",
+      color: "white",
+      transition: { duration: 0.2 }
+    },
+    tap: { scale: 0.9 }
+  };
+
+  const scrollButtonVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3 }
+    },
+    hover: { scale: 1.15, backgroundColor: "#251D74" },
+    tap: { scale: 0.9 }
+  };
+
   return (
-    <footer className="bg-white text-black px-6 md:px-20 py-12 relative">
+    <motion.footer
+      className="bg-white text-black px-6 md:px-20 py-12 relative"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <ToastContainer />
 
-   
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+          }
+        }}
+        initial="hidden"
+        animate="visible"
+      >
 
-        
-        <div>
-          <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
+        <motion.div custom={0} variants={columnVariants} initial="hidden" animate="visible">
+          <motion.h1
+            className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide"
+            whileHover={{ scale: 1.05 }}
+          >
             Gym
-          </h1>
-          <div className="font-semibold space-y-2 text-gray-700">
-            <a className="block hover:text-[#1A1363] transition">Why Join Us</a>
-            <a className="block hover:text-[#1A1363] transition">About</a>
-            <a className="block hover:text-[#1A1363] transition">Plan</a>
-            <a className="block hover:text-[#1A1363] transition">Coaches</a>
-            <a className="block hover:text-[#1A1363] transition">Inquiry</a>
-          </div>
-        </div>
+          </motion.h1>
+          <motion.div
+            className="font-semibold space-y-2 text-gray-700"
+            variants={{
+              visible: { transition: { staggerChildren: 0.05 } }
+            }}
+          >
+            {["Why Join Us", "About", "Plan", "Coaches", "Inquiry"].map((item, idx) => (
+              <motion.a
+                key={idx}
+                className="block hover:text-[#1A1363] transition cursor-pointer"
+                variants={linkVariants}
+                whileHover="hover"
+              >
+                {item}
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
 
-      
-        <div>
-          <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
+        <motion.div custom={1} variants={columnVariants} initial="hidden" animate="visible">
+          <motion.h1
+            className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide"
+            whileHover={{ scale: 1.05 }}
+          >
             Members
-          </h1>
-          <div className="font-semibold space-y-2 text-gray-700">
-            <a className="block hover:text-[#1A1363] transition">FAQs</a>
-            <a className="block hover:text-[#1A1363] transition">Contact Us</a>
-          </div>
-        </div>
+          </motion.h1>
+          <motion.div
+            className="font-semibold space-y-2 text-gray-700"
+            variants={{
+              visible: { transition: { staggerChildren: 0.05 } }
+            }}
+          >
+            {["FAQs", "Contact Us"].map((item, idx) => (
+              <motion.a
+                key={idx}
+                className="block hover:text-[#1A1363] transition cursor-pointer"
+                variants={linkVariants}
+                whileHover="hover"
+              >
+                {item}
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
 
-     
-        <div>
-          <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
+        <motion.div custom={2} variants={columnVariants} initial="hidden" animate="visible">
+          <motion.h1
+            className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide"
+            whileHover={{ scale: 1.05 }}
+          >
             Follow Us
-          </h1>
+          </motion.h1>
 
-          <div className="flex gap-4">
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              className="w-11 h-11 rounded-full border border-[#1A1363]
-              text-[#1A1363] flex items-center justify-center
-              hover:bg-[#1A1363] hover:text-white hover:scale-110
-              transition-all duration-300"
-            >
-              <FaFacebookF />
-            </a>
+          <motion.div
+            className="flex gap-4"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+          >
+            {[
+              { href: "https://www.facebook.com", icon: FaFacebookF },
+              { href: "https://www.instagram.com", icon: FaInstagram }
+            ].map((social, idx) => (
+              <motion.a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                className="w-11 h-11 rounded-full border border-[#1A1363] text-[#1A1363] flex items-center justify-center transition-all duration-300"
+                variants={socialVariants}
+                whileHover="hover"
+                whileTap="tap"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <social.icon />
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
 
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              className="w-11 h-11 rounded-full border border-[#1A1363]
-              text-[#1A1363] flex items-center justify-center
-              hover:bg-[#1A1363] hover:text-white hover:scale-110
-              transition-all duration-300"
-            >
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h1 className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide">
+        <motion.div custom={3} variants={columnVariants} initial="hidden" animate="visible">
+          <motion.h1
+            className="font-extrabold text-xl md:text-2xl mb-4 tracking-wide"
+            whileHover={{ scale: 1.05 }}
+          >
             Newsletter
-          </h1>
-          <p className="text-sm text-gray-600 mb-3">
+          </motion.h1>
+          <motion.p className="text-sm text-gray-600 mb-3">
             Get fitness tips & offers in your inbox
-          </p>
+          </motion.p>
 
-          <div className="flex">
-            <input
+          <motion.div
+            className="flex"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <motion.input
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300
-              rounded-l-md outline-none focus:border-[#1A1363]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-l-md outline-none focus:border-[#1A1363]"
+              whileFocus={{ boxShadow: "0 0 0 3px rgba(26, 19, 99, 0.1)" }}
             />
-            <button
+            <motion.button
               onClick={handleNewsletter}
-              className="bg-[#1A1363] text-white px-4 rounded-r-md
-              font-bold hover:bg-[#251D74] transition"
+              className="bg-[#1A1363] text-white px-4 rounded-r-md font-bold hover:bg-[#251D74] transition"
+              whileHover={{ backgroundColor: "#251D74", scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Join
-            </button>
-          </div>
-        </div>
-      </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
-    
-      <div className="my-10 h-px bg-gray-200"></div>
+      <motion.div
+        className="my-10 h-px bg-gray-200"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        style={{ originX: 0 }}
+      ></motion.div>
 
-   
-      <div className="text-sm text-gray-500 text-center tracking-wide">
+      <motion.div
+        className="text-sm text-gray-500 text-center tracking-wide"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+      >
         © {new Date().getFullYear()}{" "}
         <span className="font-semibold text-[#1A1363]">
           Stamina Gym
         </span>. All rights reserved.
-      </div>
+      </motion.div>
 
- 
-      {showTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6
-          bg-[#1A1363] text-white p-3 rounded-full shadow-xl
-          hover:bg-[#251D74] hover:scale-110 transition-all"
-        >
-          <FaArrowUp />
-        </button>
-      )}
-    </footer>
+      <AnimatePresence>
+        {showTop && (
+          <motion.button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 bg-[#1A1363] text-white p-3 rounded-full shadow-xl transition-all"
+            variants={scrollButtonVariants}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0, y: 50 }}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </motion.footer>
   )
 }
 

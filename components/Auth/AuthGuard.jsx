@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AuthGuard({ children }) {
 
@@ -14,7 +15,18 @@ export default function AuthGuard({ children }) {
     else setOk(true);
   }, [router]);
 
-  if (!ok) return null;
-
-  return children;
+  return (
+    <AnimatePresence mode="wait">
+      {ok ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {children}
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function TopLoader({ loading }) {
   const [width, setWidth] = useState(0);
@@ -19,11 +20,21 @@ export default function TopLoader({ loading }) {
   if (!loading && width === 0) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[3px] z-[9999]">
-      <div
-        className="h-full bg-[#1A1363] transition-all duration-300"
-        style={{ width: `${width}%` }}
-      />
-    </div>
+    <AnimatePresence>
+      {(loading || width > 0) && (
+        <motion.div
+          className="fixed top-0 left-0 w-full h-[3px] z-[9999]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="h-full bg-[#1A1363]"
+            animate={{ width: `${width}%` }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
